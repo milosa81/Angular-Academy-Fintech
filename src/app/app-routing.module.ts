@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CardListComponent } from './views/card-list/card-list.component';
+import { CardsComponent } from './views/cards/cards.component';
 import { LoginComponent } from './views/login/login.component';
+import { MovementsComponent } from './views/movements/movements.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', pathMatch: 'full', component: CardListComponent },
+  { path: 'cards', component: CardsComponent },
+  { path: 'mov', component: MovementsComponent },
+  { path: '', pathMatch: 'full', component: LoginComponent },
   { path: '**', redirectTo: '' },
 ];
 

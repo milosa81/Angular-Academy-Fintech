@@ -1,0 +1,18 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer-content>
+    <app-card-list
+      [cards]="cards"
+      (addMovement)="addMovement()"
+      (removeMovement)="removeMovement($event)"
+      (viewMovement)="viewMovement($event)"
+    ></app-card-list>
+  </mat-drawer-content>
+  <mat-drawer mode="side" opened="false" position='end'>
+    <app-card-form
+      #insertCard
+      class="card-style"
+      (add)="addCard($event)"
+      (cancel)="closeAddMovement()"
+    ></app-card-form>
+  </mat-drawer>
+</mat-drawer-container>
