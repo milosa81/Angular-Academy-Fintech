@@ -1,18 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
 import { Card } from 'src/app/models/card';
 import { Contact } from 'src/app/models/contact';
-import { DayWithSlots } from 'src/app/models/day-with-slots';
-import { Location } from 'src/app/models/location';
 import Movement from 'src/app/models/movement';
-import { DateUtilsService } from './data-utils.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class MockService {
-  constructor(private _dateUtils: DateUtilsService) {}
+
 
   getCards(): Card[] {
     return [
@@ -43,6 +38,7 @@ export class MockService {
     ];
   }
 
+
   getMovements(): Movement[] {
     let movs: Movement[] = [];
     for (let i = 0; i < 50; i++) {
@@ -63,63 +59,22 @@ export class MockService {
     return movs;
   }
 
-  private contacts: Contact[] = [
-    {
-      _id: 'Michele_Stieven',
-      name: 'Michele',
-      surname: 'Stieven',
-      iban: '1111 1111 1111 1111',
-    },
 
-    {
-      _id: 'Fabio_Biondi',
-      name: 'Fabio',
-      surname: 'Biondi',
-      iban: '1234 1234 1234 1234',
-    },
-  ];
-
-  getContacts(): Contact[] {
-    return this.contacts;
-  }
-
-  setContact(c: Contact[]) {
-    this.contacts = c;
-  }
-
-  getSites(): Location[] {
+  getContacts() : Contact[] {
     return [
       {
-        _id: '1',
-        name: 'Sede 1',
-        address: 'Via Cantarane, Verona',
-        phone: '123456',
-        email: 'email_1@email.it',
-        coords: [45.43936, 11.01406],
+        _id: "Michele_Stieven",
+        name: "Michele",
+        surname: "Stieven",
+        iban: "1111 1111 1111 1111",
       },
-      {
-        _id: '2',
-        name: 'Sede 2',
-        address: 'Vicolo Pomodoro, Verona',
-        phone: '789999999',
-        email: 'email_2@email.it',
-        coords: [45.44008, 10.98982],
-      },
-    ];
-  }
 
-  getSlots(siteId: string): Observable<DayWithSlots[]> {
-    const data: DayWithSlots[] = [];
-    for (let i = 1; i <= 30; i++) {
-      if (i % 2 === 0) {
-        const date = new Date();
-        date.setDate(i);
-        data.push({
-          day: this._dateUtils.dateToString(date),
-          slots: [9, 10, 11, 12, 14, 15, 16, 17],
-        });
+      {
+        _id: "Fabio_Biondi",
+        name: "Fabio",
+        surname: "Biondi",
+        iban: "1234 1234 1234 1234",
       }
-    }
-    return of(data).pipe(delay(500));
+    ];
   }
 }
